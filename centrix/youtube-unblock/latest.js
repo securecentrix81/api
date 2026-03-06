@@ -4,7 +4,7 @@ document.addEventListener('click', (e) => {
     const url = new URL(origin.href);
     if (url.hostname.includes('youtube.com')) {
       e.preventDefault();
-      location.href = "https://securecentrix81.github.io/youtube-viewer/viewer?v="+new URLSearchParams(url.search).get("v")
+      location.href = "https://securecentrix81.github.io/api/centrix/youtube-unblock/viewer/latest.html?v="+new URLSearchParams(url.search).get("v")
     }
   }
 }, true);
@@ -13,7 +13,7 @@ document.addEventListener('click', (e) => {
 const originalOpen = window.open;
 window.open = function(url, ...args) {
   if (url && url.toString().includes('youtube.com')) {
-    location.href = "https://securecentrix81.github.io/youtube-viewer/viewer?v="+new URLSearchParams(url.search).get("v")
+    location.href = "https://securecentrix81.github.io/api/centrix/youtube-unblock/viewer/latest.html?v="+new URLSearchParams(url.search).get("v")
     return null;
   }
   return originalOpen.apply(window, [url, ...args]);
@@ -23,7 +23,7 @@ window.open = function(url, ...args) {
 const originalPushState = history.pushState;
 history.pushState = function(state, title, url) {
   if (url && url.toString().includes('youtube.com')) {
-    location.href = "https://securecentrix81.github.io/youtube-viewer/viewer?v="+new URLSearchParams(url.search).get("v")
+    location.href = "https://securecentrix81.github.io/api/centrix/youtube-unblock/viewer/latest.html?v="+new URLSearchParams(url.search).get("v")
     return;
   }
   return originalPushState.apply(history, [state, title, url]);
@@ -34,7 +34,7 @@ setInterval(() => {
 	for (let element of n) {
 		const url = new URL(element.src)
 		if (url.hostname.includes('youtube.com')) {
-			element.src = "https://securecentrix81.github.io/youtube-viewer/viewer?v="+new URLSearchParams(url.search).get("v")
+			element.src = "https://securecentrix81.github.io/api/centrix/youtube-unblock/viewer/latest.html?v="+new URLSearchParams(url.search).get("v")
 		}
 	}
 },100)
